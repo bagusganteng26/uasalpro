@@ -31,24 +31,6 @@ void tambahBarang(struct Barang inventaris[], int *n) {
   (*n)++;
 }
 
-void cariBarang(struct Barang inventaris[], int n) {
-  // Kode untuk mencari barang
-  char kodeCari[10];
-  printf("Masukkan kode barang yang dicari: ");
-  scanf("%s", kodeCari);
-
-  int index = findBarangIndex(inventaris, n, kodeCari);
-  if (index != -1) {
-    printf("Barang ditemukan:\n");
-    printf("Kode: %s\n", inventaris[index].kode);
-    printf("Nama: %s\n", inventaris[index].nama);
-    printf("Jumlah: %d\n", inventaris[index].jumlah);
-    printf("Harga: %.2lf\n", inventaris[index].harga);
-  } else {
-    printf("Barang tidak ditemukan.\n");
-  }
-}
-
 void updateBarang(struct Barang inventaris[], int n) {
   // Kode untuk update barang
   char kodeUpdate[10];
@@ -109,11 +91,10 @@ int main() {
 
     printf("Menu:\n");
     printf("1. Tambah Barang\n");
-    printf("2. Cari Barang\n");
-    printf("3. Update Barang\n");
-    printf("4. Hapus Barang\n");
-    printf("5. Tampil Barang\n");
-    printf("6. Keluar\n");
+    printf("2. Update Barang\n");
+    printf("3. Hapus Barang\n");
+    printf("4. Tampil Barang\n");
+    printf("5. Keluar\n");
     printf("Pilih menu: ");
     scanf("%d", &menu);
 
@@ -122,18 +103,15 @@ int main() {
         tambahBarang(inventaris, &n);
         break;
       case 2:
-        cariBarang(inventaris, n);
-        break;
-      case 3:
         updateBarang(inventaris, n);
         break;
-      case 4:
+      case 3:
         hapusBarang(inventaris, &n);
         break;
-      case 5:
+      case 4:
         tampilBarang(inventaris, n);
         break;
-      case 6:
+      case 5:
         printf("Terima kasih");
         return 0; // Keluar dari program
       default:
